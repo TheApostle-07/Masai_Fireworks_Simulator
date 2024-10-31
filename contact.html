@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Fireworks Display</title>
+    <link rel="stylesheet" href="assets/css/contact.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+</head>
+<body>
+    <!-- Starry Background Layers -->
+    <div class="background-wrapper">
+        <div id="stars-container"></div>
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <header>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
+
+    <!-- Main Content -->
+    <main>
+        <h1>Contact Me</h1>
+        <p>I would love to hear from you! Fill out the form below to get in touch with me directly.</p>
+
+        <!-- Contact Email Section -->
+        <div class="contact-info">
+            <img src="assets/images/rufus.png" alt="Profile Photo" class="profile-photo">
+            <p>Email: <a href="mailto:rufusbright595@gmail.com" class="email-link">rufusbright595@gmail.com</a></p>
+        </div>
+
+        <!-- Contact Form -->
+        <form class="contact-form" onsubmit="return handleFormSubmission(event)">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+
+            <button type="submit" id="submit-button">Send Message</button>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Fireworks Display Project | <a href="index.html">Home</a> | <a href="about.html">About</a></p>
+    </footer>
+
+    <!-- Load Header Script -->
+    <script src="assets/js/common.js"></script>
+    <script>
+        function handleFormSubmission(event) {
+            event.preventDefault(); // Prevent default form submission
+    
+            const submitButton = document.getElementById("submit-button");
+    
+            // Display loading animation on the button
+            submitButton.disabled = true;
+            submitButton.classList.add("button-loading");
+            submitButton.innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
+    
+            // Collect form data
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+            const timestamp = new Date().toISOString(); // Generate ISO timestamp
+    
+            // Google Apps Script URL
+            const scriptURL = "https://script.google.com/macros/s/AKfycbxsDiw-xb_71v0kbsJxTJ7Nj9YjpwBGWGWZodNArZZYPniVtwlm1K2yK2Z4fQ2YEIF_/exec"; // Replace with your Apps Script URL
+    
+            // Send data to Google Apps Script
+            fetch(scriptURL, {
+                method: "POST",
+                body: new URLSearchParams({name, email, message, timestamp}),
+            })
+            .then(response => {
+                if (response.ok) {
+                    sessionStorage.setItem("formSubmitted", "true"); // Set session flag
+                    window.location.href = "thankyou.html"; // Redirect to Thank You page on success
+                } else {
+                    window.location.href = "error.html"; // Redirect to Error page on server failure
+                }
+            })
+            .catch(error => {
+                console.error("Network Error!", error);
+                sessionStorage.setItem("submissionError", "true");
+                window.location.href = "error.html"; // Redirect to Error page on network error
+            })
+            .finally(() => {
+                // Reset button state if not redirected
+                if (!sessionStorage.getItem("formSubmitted")) {
+                    submitButton.disabled = false;
+                    submitButton.classList.remove("button-loading");
+                    submitButton.innerHTML = "Send Message"; // Reset button text
+                }
+            });
+        }
+    </script>
+</body>
+</html>

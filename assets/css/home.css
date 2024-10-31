@@ -1,0 +1,137 @@
+/* Home Page Styles */
+
+/* Full-screen canvas for fireworks */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    color: var(--platinum);
+    background-color: var(--black);
+    position: relative;
+}
+
+h1 {
+    margin-bottom: 0.5rem;
+    color: var(--orange-web);
+    font-size: 2.5rem;
+    z-index: 99;
+}
+
+p {
+    margin-top: 0;
+    color: var(--platinum);
+    font-size: 1.1rem;
+    z-index: 99;
+}
+
+/* Full-Screen Canvas */
+#fireworksCanvas {
+    position: fixed; /* Position the canvas fixed to cover the whole viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2; /* Ensure it stays behind other content */
+    background-color: transparent; 
+    /*border: 3px solid red; Keep background transparent for overlay effects */
+}
+
+/* Footer */
+footer {
+    background-color: var(--oxford-blue);
+    color: var(--platinum);
+    padding: 1rem;
+    font-size: 0.9rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+}
+
+footer a {
+    color: var(--orange-web);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Adjustments for responsive design if needed */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+}
+
+/* Explosion counter container: position below the header */
+.explosion-counter {
+    position: absolute;
+    top:80px; /* Adjust this based on header height and desired gap */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+    z-index: 1000;
+    opacity: 1; /* Default visible */
+    transition: opacity 1s ease-out; /* Smooth fade-out transition */
+}
+
+/* Individual square styling */
+.square {
+    width: 20px;
+    height: 20px;
+    background-color: #ddd; /* Default color for unhighlighted squares */
+    border: 1px solid #444; /* Optional: border for squares */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Highlight colors for gradient effect */
+.square-1 { background-color: #39FF14; }    /* Bright Neon Green */
+.square-2 { background-color: #A8FF00; }    /* Medium Green */
+.square-3 { background-color: #D4FF00; }    /* Light Greenish-Yellow */
+.square-4 { background-color: #EEFF00; }    /* Very Light Greenish-Yellow */
+.square-5 { background-color: #FFFF00; }    /* Light Yellowish */
+.square-6 { background-color: #FFD300; }    /* Bright Neon Yellow */
+.square-7 { background-color: #FFA500; }    /* Light Yellowish-Red */
+.square-8 { background-color: #FF8C00; }    /* Light Orangeish */
+.square-9 { background-color: #FF4500; }    /* Medium Reddish */
+.square-10 { background-color: #FF0000; }   /* Dark Neon Reddish */
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .square {
+        width: 15px;
+        height: 15px;
+    }
+
+    .explosion-counter {
+        top: 85px; /* Adjust if header height differs on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .square {
+        width: 10px;
+        height: 10px;
+    }
+
+    .explosion-counter {
+        top: 80px; /* Adjust if header height differs on smaller screens */
+    }
+}

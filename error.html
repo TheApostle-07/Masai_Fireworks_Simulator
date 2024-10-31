@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Fireworks Display</title>
+
+    <!-- Early check for access permission -->
+    <script>
+        if (!sessionStorage.getItem("submissionError")) {
+            // Redirect immediately if accessed without the error flag
+            window.location.href = "access-denied.html"; // Or any page you want to redirect to
+        } else {
+            // Remove the error flag for one-time access
+            sessionStorage.removeItem("submissionError");
+        }
+    </script>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome link -->
+    <style>
+        /* Main container styling */
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            opacity: 1;
+            z-index: 10;
+            transition: opacity 1s ease-in-out;
+            padding: 0 20px;
+        }
+
+        /* Icon styling */
+        .error-container .fa-circle-xmark {
+            font-size: 4rem;
+            color: #ff4c4c;
+            margin-bottom: 20px;
+        }
+
+        /* Error Heading */
+        .error-container h1 {
+            font-size: 2rem;
+            color: var(--platinum);
+            margin-bottom: 1rem;
+        }
+
+        /* Message text */
+        .error-container p {
+            font-size: 1rem;
+            color: var(--platinum);
+            max-width: 500px;
+        }
+
+        /* Countdown Styling */
+        .countdown {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff6347;
+            animation: glowPulse 1s ease-in-out infinite;
+        }
+
+        /* Glow effect for countdown */
+        @keyframes glowPulse {
+            0%, 100% {
+                text-shadow: 0 0 10px #ff6347, 0 0 20px #ff6347, 0 0 30px #ff6347;
+            }
+            50% {
+                text-shadow: 0 0 15px #ff4500, 0 0 25px #ff4500, 0 0 40px #ff4500;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .error-container .fa-circle-xmark {
+                font-size: 3.5rem;
+            }
+            .error-container h1 {
+                font-size: 1.8rem;
+            }
+            .error-container p {
+                font-size: 1rem;
+            }
+            .countdown {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-container .fa-circle-xmark {
+                font-size: 3rem;
+            }
+            .error-container h1 {
+                font-size: 1.5rem;
+            }
+            .error-container p {
+                font-size: 0.9rem;
+            }
+            .countdown {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background and Stars -->
+    <div class="background-wrapper">
+        <div id="stars-container"></div>
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Error Content -->
+    <div class="error-container">
+        <i class="fa-regular fa-circle-xmark"></i> <!-- Font Awesome X Icon -->
+        <h1>Oops! Something Went Wrong.</h1>
+        <p>An error occurred while submitting your message. Redirecting you back to the contact page in <span class="countdown">10</span> seconds...</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Fireworks Display Project | <a href="index.html">Home</a> | <a href="about.html">About</a></p>
+    </footer>
+
+    <!-- JavaScript for countdown and redirect -->
+    <script>
+        let countdown = 10;
+        const countdownElement = document.querySelector('.countdown');
+        const errorContainer = document.querySelector('.error-container');
+
+        const interval = setInterval(() => {
+            countdown -= 1;
+            countdownElement.textContent = countdown;
+            if (countdown === 0) {
+                clearInterval(interval);
+                errorContainer.style.opacity = '0'; // Start fade-out effect
+                setTimeout(() => {
+                    window.location.href = "contact.html"; // Redirect back to contact page
+                }, 1000); // Redirect after fade-out completes
+            }
+        }, 1000); // Updates every second
+    </script>
+</body>
+</html>

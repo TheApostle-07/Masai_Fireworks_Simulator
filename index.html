@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Fireworks Display</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+</head>
+<body>
+    <!-- Header Container for dynamic loading -->
+    <header>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
+
+
+      <div class="explosion-counter">
+        <div class="square" id="square-1"></div>
+        <div class="square" id="square-2"></div>
+        <div class="square" id="square-3"></div>
+        <div class="square" id="square-4"></div>
+        <div class="square" id="square-5"></div>
+        <div class="square" id="square-6"></div>
+        <div class="square" id="square-7"></div>
+        <div class="square" id="square-8"></div>
+        <div class="square" id="square-9"></div>
+        <div class="square" id="square-10"></div>
+    </div>
+
+      <!-- Starry Background Layers -->
+      <div id="stars-container"></div>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <!-- Main Content -->
+    <main>
+        <h1>Welcome to the Fireworks Display</h1>
+        <p>Click anywhere on the canvas to create your own fireworks!</p>
+        <canvas id="fireworksCanvas"></canvas>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Fireworks Display Project | <a href="about.html">About</a> | <a href="contact.html">Contact</a></p>
+    </footer>
+
+    <!-- Load JavaScript files -->
+    <script src="assets/js/common.js"></script> <!-- Loads header dynamically -->
+    <script src="assets/js/fireworks.js"></script> <!-- Fireworks display logic -->
+</body>
+</html>

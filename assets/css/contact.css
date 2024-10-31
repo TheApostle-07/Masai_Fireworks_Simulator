@@ -1,0 +1,267 @@
+/* Define the color palette */
+
+@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+
+:root {
+    --black: #000000;
+    --oxford-blue: #14213d;
+    --orange-web: #fca311;
+    --platinum: #e5e5e5;
+    --white: #ffffff;
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--black);
+    color: var(--platinum);
+    text-align: center;
+    line-height: 1.6;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+header {
+    background-color: var(--oxford-blue); /* Uses your defined color variable */
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 101;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Navigation Links */
+header nav a {
+    color: var(--platinum); /* Existing text color */
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem; /* Adds padding for button-like appearance */
+    border-radius: 5px; /* Rounded corners for a modern button effect */
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+/* Button-like Effect on Hover */
+header nav a:hover {
+    background-color: rgba(255, 165, 0, 0.2); /* Adds a light background with transparency */
+    color: var(--orange-web); /* Text color on hover */
+    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.2); /* Soft shadow effect on hover */
+}
+
+/* Active Link Styling */
+header nav a.active {
+    background-color: rgba(255, 165, 0, 0.3); /* Slightly stronger background */
+    color: var(--orange-web);
+    box-shadow: 0px 4px 8px rgba(255, 165, 0, 0.3); /* Emphasized shadow for active link */
+}
+
+
+
+/* Main Content */
+main {
+    padding-top: 100px;
+    margin: 20px auto;
+    max-width: 700px;
+    z-index: 99;
+}
+
+main h1 {
+    font-size: 2.5rem;
+    color: var(--orange-web);
+    margin-bottom: 0.5rem;
+}
+
+main p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--platinum);
+}
+
+.portfolio .intro {
+    margin-bottom: 3rem;
+    padding: 0 20px;
+    position: relative;
+    display: flex;
+    z-index: 99;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid var(--orange-web);
+    z-index: 999;
+    margin-bottom: 1rem;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px 8px rgba(252, 163, 17, 0.6);
+}
+
+
+/* Email Link Styling */
+.email-link {
+    color: var(--orange-web);
+    font-weight: 500;
+    text-decoration: none;
+    z-index: 99;
+
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.email-link:hover {
+    color: #ff9900; /* Slightly different shade on hover */
+    text-shadow: 0px 0px 6px rgba(252, 163, 17, 0.8);
+    text-decoration: underline;
+}
+
+
+/* Contact Form Styling */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: var(--oxford-blue);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    color: var(--white);
+    max-width: 600px;
+    z-index: 999;
+
+    margin: 0 auto;
+    margin-bottom: 5rem; /* Add this line to create space at the bottom */
+}
+
+.contact-form label {
+    text-align: left;
+    font-size: 1rem;
+    z-index: 99;
+
+    color: var(--platinum);
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    font-size: 1rem;
+    z-index: 99;
+
+    background-color: #1a1a1a;
+    border: 1px solid var(--orange-web);
+    color: var(--white);
+    border-radius: 5px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--orange-web);
+    outline: none;
+    background-color: #292929;
+}
+
+.contact-form button {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    color: var(--white);
+    background-color: var(--orange-web);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 99;
+
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form button:hover {
+    background-color: #e59400;
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background-color: var(--oxford-blue);
+    color: var(--platinum);
+    padding: 1rem;
+    font-size: 0.9rem;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    z-index: 101;
+    text-align: center;
+}
+
+footer a {
+    color: var(--orange-web);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main h1 {
+        font-size: 2rem;
+    }
+
+    .contact-form {
+        padding: 1.5rem;
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 5rem;
+    }
+}
+
+
+
+
+/* Loading dots style */
+.button-loading {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #28a745; /* Green */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    cursor: not-allowed;
+}
+
+.loading-dots span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 0 2px;
+    animation: blink 1s infinite both;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: 0s; }
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes blink {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
